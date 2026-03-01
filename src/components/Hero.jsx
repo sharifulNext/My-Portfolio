@@ -113,7 +113,7 @@ const Hero = () => {
           className="relative z-10 w-72 h-72 md:w-[380px] md:h-[380px] lg:w-[440px] lg:h-[440px] rounded-full p-1.5 border-2 border-[#00ffee] shadow-[0_0_60px_rgba(0,255,238,0.3)] overflow-hidden"
         >
           <img
-            src="/src/assets/portfolio.jpeg" 
+            src="https://i.ibb.co.com/chZCZh1Q/portfolio.jpg" 
             alt="Shariful Islam"
             className="w-full h-full object-cover rounded-full transition-transform duration-700 hover:scale-110"
           />
