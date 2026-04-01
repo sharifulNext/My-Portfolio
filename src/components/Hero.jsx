@@ -1,11 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react"; 
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { Github, Linkedin, Facebook, Mail, Download, ExternalLink, Icon, Twitter } from "lucide-react";
+import { Github, Linkedin, Facebook, Mail, Download, ExternalLink, Twitter, X } from "lucide-react"; 
 import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
   const heroRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   // GSAP Entrance Animation
   useEffect(() => {
@@ -31,7 +32,7 @@ const Hero = () => {
     <section
       ref={heroRef}
       id="home"
-      className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 pt-32 pb-16 overflow-hidden bg-transparent"
+      className="relative min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between px-6 md:px-12 lg:px-24 pt-32 pb-16 overflow-hidden bg-transparent"
     >
       {/* Left Side: Information */}
       <div className="flex-1 space-y-6 mt-12 lg:mt-0 text-left">
@@ -66,16 +67,14 @@ const Hero = () => {
 
         {/* Action Buttons */}
         <div className="animate-left flex flex-wrap gap-5 pt-4">
-          {/* Resume Button */}
-          <a
-            href="/Shariful Resume.pdf" 
-            target="_blank"
-            download="Shariful Resume.pdf"
+          {/* View Resume Button (Triggers Modal) */}
+          <button
+            onClick={() => setIsModalOpen(true)}
             className="flex items-center gap-2 bg-[#00ffee] text-black font-bold py-3.5 px-8 rounded-full shadow-[0_0_20px_rgba(0,255,238,0.4)] hover:shadow-[0_0_40px_rgba(0,255,238,0.6)] hover:scale-105 transition-all duration-300"
           >
-            <Download size={20} />
-            Download Resume
-          </a>
+            <ExternalLink size={20} />
+            View My Resume
+          </button>
           
           <button 
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
@@ -92,7 +91,7 @@ const Hero = () => {
             { Icon: Linkedin, link: "https://www.linkedin.com/in/shariful-islam-30907b267/" },
             { Icon: Facebook, link: "https://www.facebook.com/shariful.islam.522169/" },
             { Icon: Mail, link: "mailto:sharifulislam242248@gmail.com" },
-            {Icon: Twitter, link: "https://x.com/it_shariful"}
+            { Icon: Twitter, link: "https://x.com/it_shariful" }
           ].map((item, index) => (
             <a
               key={index}
@@ -107,6 +106,7 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Right Side: Image */}
       <div className="animate-right relative flex justify-center items-center">
         <div className="absolute w-[280px] h-[280px] md:w-[420px] md:h-[420px] bg-[#00ffee]/20 rounded-full blur-[80px] animate-pulse"></div>
         
@@ -131,6 +131,50 @@ const Hero = () => {
           <p className="text-[#00ffee] font-bold text-lg">Job</p>
         </motion.div>
       </div>
+
+      {/* Resume Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="relative w-full max-w-4xl h-[90vh] bg-[#080808] rounded-2xl border border-[#00ffee]/30 shadow-[0_0_50px_rgba(0,255,238,0.2)] flex flex-col overflow-hidden"
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-5 border-b border-[#00ffee]/20">
+              <h3 className="text-[#00ffee] font-bold text-xl flex items-center gap-2">
+                <ExternalLink size={20} /> Resume Preview
+              </h3>
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="p-2 hover:bg-red-500/20 text-red-500 rounded-full transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Modal Body - PDF Viewer */}
+            <div className="flex-1 bg-white/5">
+              <iframe
+                src="/Shariful Resume.pdf" 
+                className="w-full h-full"
+                title="Shariful Islam Resume"
+              ></iframe>
+            </div>
+
+            {/* Modal Footer - Download Button */}
+            <div className="p-4 bg-[#0a0a0a] flex justify-center sm:justify-end gap-4 border-t border-[#00ffee]/10">
+              <a
+                href="/Shariful Resume.pdf"
+                download="Shariful Resume.pdf"
+                className="flex items-center gap-2 bg-[#00ffee] text-black px-6 py-2.5 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all"
+              >
+                <Download size={18} /> Download Copy
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
