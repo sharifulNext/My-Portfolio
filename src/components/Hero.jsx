@@ -156,7 +156,7 @@ const Hero = () => {
             {/* Modal Body - PDF Viewer */}
             <div className="flex-1 bg-white/5">
               <iframe
-                src="/public/Shariful Resume1.pdf" 
+                src="/Shariful Resume1.pdf" 
                 className="w-full h-full"
                 title="Shariful Islam Resume"
               ></iframe>
@@ -165,7 +165,7 @@ const Hero = () => {
             {/* Modal Footer - Download Button */}
             <div className="p-4 bg-[#0a0a0a] flex justify-center sm:justify-end gap-4 border-t border-[#00ffee]/10">
               <a
-                href="/Shariful Resume.pdf"
+                href="/Shariful Resume1.pdf"
                 download="Shariful Resume.pdf"
                 className="flex items-center gap-2 bg-[#00ffee] text-black px-6 py-2.5 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all"
               >
