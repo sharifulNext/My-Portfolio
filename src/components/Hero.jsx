@@ -45,7 +45,7 @@ const Hero = () => {
           <span className="text-[#00ffee] drop-shadow-[0_0_15px_#00ffee]">
             <TypeAnimation
               sequence={[
-                "Frontend Developer",
+                "Full-Stack Developer",
                 2000,
                 "Web Designer",
                 2000,
@@ -156,7 +156,7 @@ const Hero = () => {
             {/* Modal Body - PDF Viewer */}
             <div className="flex-1 bg-white/5">
               <iframe
-                src="/Shariful Resume.pdf" 
+                src="/public/Shariful Resume1.pdf" 
                 className="w-full h-full"
                 title="Shariful Islam Resume"
               ></iframe>
