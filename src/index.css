@@ -11,55 +11,68 @@
 body {
     background: var(--bg-dark);
     color: var(--text-dark);
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
-/
 .glow-text {
     text-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--accent-color);
 }
 
+/* --- Light Mode (Optimized & Soft) --- */
 body.light-mode {
-    background: #f8f9fa !important; 
-    color: #121212 !important;     
+    /* Pure white er poriborte soft off-white */
+    background: #fdfdfd !important; 
+    color: #1f2937 !important; /* gray-800: aro deep ebong readable */
 }
 
+/* Light Mode Glass Effect - Aro subtle kora hoyeche */
 body.light-mode .glass {
-    background: rgba(255, 255, 255, 0.7) !important;
-    backdrop-filter: blur(12px);
-    border-color: rgba(0, 0, 0, 0.1) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
-/* Light Mode এ নেভিগেশন লিংকের কালার */
+/* Light Mode Headers - Pure black noy, deep gray */
 body.light-mode nav a, 
-body.light-mode .text-white,
 body.light-mode h1,
+body.light-mode h2,
 body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
 body.light-mode .hero-text {
-    color: #121212 !important; /* টেক্সট কালো হয়ে যাবে */
+    color: #111827 !important; /* gray-900 */
 }
 
-/* Light Mode এ প্যারাগ্রাফ বা মিউটেড টেক্সট */
+/* Light Mode Paragraphs - Chokhe lagbe na emon gray */
 body.light-mode p,
-body.light-mode .text-gray-400 {
-    color: #4b5563 !important; /* গাঢ় ধূসর (gray-600) */
+body.light-mode span,
+body.light-mode .text-gray-400,
+body.light-mode .text-gray-300 {
+    color: #4b5563 !important; /* gray-600 */
 }
 
-/* Light Mode এ Shariful Islam এর উজ্জ্বলতা */
-body.light-mode .glow-text {
-    color: #008b82 !important; /* সায়ান কালারটি একটু গাঢ় করা হয়েছে যাতে সাদা ব্যাকগ্রাউন্ডে ফুটে ওঠে */
-    text-shadow: 0 0 10px rgba(0, 255, 238, 0.3);
+/* Light Mode Accent Color (Shariful/Glow) - Joljol komanor jonno deep kora hoyeche */
+body.light-mode .glow-text,
+body.light-mode .text-[#00ffee] {
+    color: #0891b2 !important; /* Cyan-700: aro deep jate shada-te bhalo dekhay */
+    text-shadow: none !important; /* Glow soriye deya hoyeche glare komanor jonno */
 }
 
-/* Light Mode এ কার্ডের বর্ডার বা অন্যান্য এলিমেন্ট */
-body.light-mode .border-white\/10 {
-    border-color: rgba(0, 0, 0, 0.1) !important;
+/* Light Mode Borders - Onek halka (Subtle) */
+body.light-mode .border-white\/10,
+body.light-mode .border-black\/5 {
+    border-color: rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Light Mode এ লোগোর প্রথম অংশ (Shariful) */
-body.light-mode .drop-shadow-\[0_0_10px_rgba\(255\,255\,255\,0\.8\)\] {
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+/* Background Gradients - Light mode-e halka kora hoyeche */
+body.light-mode .bg-white\/5,
+body.light-mode .bg-black\/5 {
+    background-color: rgba(0, 0, 0, 0.03) !important;
 }
 
-
+/* Light mode icon/stats box glow komanor jonno */
+body.light-mode .bg-\[\#00ffee\]\/10 {
+    background-color: rgba(8, 145, 178, 0.1) !important; /* Soft Teal */
+    color: #0891b2 !important;
+}

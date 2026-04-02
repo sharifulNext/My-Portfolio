@@ -12,7 +12,7 @@ const educationData = [
     duration: "2026 - Present",
     location: "Sylhet, Bangladesh",
     description: "Currently in my 6th Semester. Focusing on Core Computer Science principles including Data Structures, Database Management Systems (DBMS), and Full Stack Development. Actively applying theoretical knowledge to build MERN stack applications.",
-    grade: "Current Semester: 6th"
+    grade: "Current Semester: 7th"
   },
   {
     degree: "Secondary School Certificate (SSC)",

@@ -63,7 +63,7 @@ const About = () => {
                 <h3 className="text-xl font-bold dark:text-white">Developer Journey</h3>
               </div>
               <p className="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                Driven by curiosity, I transitioned from an experimenter to a <span className="text-black dark:text-white font-bold">MERN Stack Developer</span>. Based in Sylhet, I focus on building high-performance applications where **Clean Code** meets **Exceptional UI**.
+                I am a <span className="text-black dark:text-white font-bold underline decoration-[#00ffee] decoration-2 underline-offset-4">Full Stack Developer</span> from Sylhet, specializing in the <span className="text-black dark:text-white font-bold">MERN stack & Next.js 15</span>. My approach is simple: I combine robust backend architecture with intuitive frontend designs to build high-performance applications. I thrive on solving complex problems with **Clean Code** and delivering seamless digital experiences.
               </p>
             </motion.div>
 
