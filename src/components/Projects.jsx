@@ -65,6 +65,17 @@ const projectsData = [
   },
   {
     id: 3,
+    title: "Cloth Store",
+    image: "https://i.ibb.co/5xF7Z80N/Screenshot-2026-03-02-024921.png",
+    tech: ["React", "Tailwind CSS", "Node.js", "MongoDB","Stripe","Vite"],
+    description: "Modern ecommerce Cloth store.",
+    live: "https://e-commerce-oh13.vercel.app/",
+    github: "https://github.com/sharifulNext/E-commerce-",
+    challenges: "Developing a synchronized state between the admin panel and storefront while ensuring secure JWT authentication and Stripe integration.",
+    future: "Add AI-powered product recommendations and automated invoice generation."
+  },
+  {
+    id: 4,
     title: "StudyMate",
     image: "https://i.ibb.co/6JwkD81j/Screenshot-2026-03-02-024902.png",
     tech: ["React", "Firebase Auth", "Tailwind CSS", "Express.js"],
@@ -73,17 +84,6 @@ const projectsData = [
     github: "https://github.com/shariful4488/Studymart-Frontend",
     challenges: "Real-time assignment updates.",
     future: "Add video chat feature."
-  },
-  {
-    id: 4,
-    title: "Cloth Store",
-    image: "https://i.ibb.co/5xF7Z80N/Screenshot-2026-03-02-024921.png",
-    tech: ["React", "Tailwind CSS", "Framer Motion", "Vite"],
-    description: "Modern ecommerce frontend.",
-    live: "https://frontend-peach-xi.vercel.app/",
-    github: "https://github.com/shariful4488/Frontend",
-    challenges: "Complex animations with good performance.",
-    future: "Convert to MERN ecommerce system."
   }
 ];
 
@@ -182,75 +182,101 @@ const Projects = () => {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 bg-black/90 flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 bg-black/95 flex items-center justify-center p-4 z-50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setSelectedIndex(null)}
           >
             <motion.div
-              className="bg-[#111] max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-3xl p-6 md:p-10"
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
+              className="bg-[#111] max-w-5xl w-full max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 shadow-2xl relative"
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex justify-end mb-4">
+              {/* Sticky Close Button */}
+              <div className="sticky top-0 right-0 flex justify-end p-4 z-10 bg-[#111]/50 backdrop-blur-md">
                 <button
                   onClick={() => setSelectedIndex(null)}
-                  className="p-2 hover:bg-white/10 rounded-lg"
+                  className="p-2 hover:bg-white/10 rounded-full transition bg-black/50"
                 >
                   <X size={24} className="text-white" />
                 </button>
               </div>
 
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="w-full rounded-xl mb-6"
-              />
+              <div className="px-6 pb-10 md:px-10">
+                <div className="flex flex-col lg:flex-row gap-10">
+                  
+                  {/* Image Section */}
+                  <div className="lg:w-1/2">
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className="w-full rounded-2xl shadow-lg border border-white/5"
+                    />
+                  </div>
 
-              <h3 className="text-3xl font-bold text-white mb-4">{selectedProject.title}</h3>
+                  {/* Info Section */}
+                  <div className="lg:w-1/2 flex flex-col justify-center">
+                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{selectedProject.title}</h3>
+                    <div className="h-1 w-20 bg-[#00ffee] mb-6"></div>
 
-              <div className="flex flex-wrap gap-3 mb-6">
-                {selectedProject.tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="flex items-center gap-2 px-3 py-1 bg-white/10 rounded text-sm text-white"
-                  >
-                    {getIcon(tech)}
-                    {tech}
-                  </span>
-                ))}
+                    <div className="mb-6">
+                      <h4 className="text-sm uppercase tracking-widest text-[#00ffee] mb-2 font-bold">Tech Stack</h4>
+                      <div className="flex flex-wrap gap-3">
+                        {selectedProject.tech.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-sm text-white"
+                          >
+                            {getIcon(tech)}
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mb-6">
+                      <h4 className="text-sm uppercase tracking-widest text-[#00ffee] mb-2 font-bold">About Project</h4>
+                      <p className="text-gray-300 leading-relaxed">{selectedProject.description}</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                      <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                        <h4 className="text-xs font-bold text-gray-500 uppercase mb-1">Main Challenge</h4>
+                        <p className="text-sm text-gray-300 italic">{selectedProject.challenges}</p>
+                      </div>
+                      <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                        <h4 className="text-xs font-bold text-gray-500 uppercase mb-1">Future Update</h4>
+                        <p className="text-sm text-gray-300 italic">{selectedProject.future}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                      <a
+                        href={selectedProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-[#00ffee] text-black py-4 rounded-xl font-bold hover:shadow-[0_0_15px_rgba(0,255,238,0.4)] transition"
+                      >
+                        <ExternalLink size={20} />
+                        Live Demo
+                      </a>
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 bg-white/10 text-white py-4 rounded-xl font-bold border border-white/10 hover:bg-white/20 transition"
+                      >
+                        <Github size={20} />
+                        Source Code
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
               </div>
-
-              <p className="text-gray-300 mb-6">{selectedProject.description}</p>
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <a
-                  href={selectedProject.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-[#00ffee] text-black py-3 rounded-xl"
-                >
-                  <ExternalLink size={18} />
-                  Live Project
-                </a>
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-white/10 text-white py-3 rounded-xl"
-                >
-                  <Github size={18} />
-                  Client Code
-                </a>
-              </div>
-
-              <p className="text-gray-400 mb-4">
-                <strong>Challenges:</strong> {selectedProject.challenges}
-              </p>
-              <p className="text-gray-400">
-                <strong>Future:</strong> {selectedProject.future}
-              </p>
             </motion.div>
           </motion.div>
         )}
